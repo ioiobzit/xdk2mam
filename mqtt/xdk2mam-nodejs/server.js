@@ -1,6 +1,6 @@
 
 const sensordata = require('xdk2mam');
-const IOTA = require('iota.lib.js');
+const IOTA = require('@iota/core');
 const mqtt = require ('mqtt');
 
 var Mam = require('./node_modules/xdk2mam/mam.client.js');
@@ -9,9 +9,8 @@ var client  = mqtt.connect('mqtt://username:password@IPMQTTHOST:PORT'); //exampl
 var jsonData;
 
 // Enter your Node URL and port (be sure to use a node with PoW enabled)
-let iota = new IOTA({
-  'host': 'http://your-node.com',
-  'port': '14265'
+let iota = new IOTA.composeAPI({
+  'provider': 'http://your-node.com:14265'
 });
 
 client.on('connect', function () {
